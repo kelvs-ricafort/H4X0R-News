@@ -14,9 +14,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(networkManager.posts) { post in
-                HStack {
-                    Text("\(post.points)")
-                    Text(post.title)
+                NavigationLink(destination: DetailView(url: post.url)) {
+                    HStack {
+                        Text("\(post.points)")
+                        Text(post.title)
+                    }
                 }
             }
             .navigationBarTitle("H4X0R News")
@@ -30,7 +32,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView().preferredColorScheme(.dark)
             ContentView().preferredColorScheme(.dark)
             
         }
